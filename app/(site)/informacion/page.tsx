@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import PageHeader from "@/components/PageHeader";
 import Reveal from "@/components/Reveal";
 import type { DocItem } from "@/lib/content";
+import { asset } from "@/lib/paths";
 import { getContent } from "@/lib/store";
 
 export const metadata: Metadata = {
@@ -60,7 +61,7 @@ function DocRow({ doc, n }: { doc: DocItem; n: number }) {
   const Wrapper = available ? "a" : "div";
   return (
     <Wrapper
-      {...(available ? { href: doc.url!, target: "_blank", rel: "noreferrer" } : {})}
+      {...(available ? { href: asset(doc.url), target: "_blank", rel: "noreferrer" } : {})}
       className={`group grid items-center gap-6 rounded-[24px] p-6 ring-1 transition sm:grid-cols-[auto_1fr_auto] sm:gap-8 sm:p-8 ${
         available ? "bg-white/[0.04] ring-white/10 hover:bg-white/[0.07] hover:ring-white/25" : "bg-transparent ring-white/10"
       }`}

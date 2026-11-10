@@ -1,3 +1,4 @@
+import { asset } from "@/lib/paths";
 import { getContent } from "@/lib/store";
 
 const STATS = [
@@ -13,8 +14,8 @@ export default async function Hero() {
     <section id="top" className="grain relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-ink">
       <video
         className="absolute inset-0 h-full w-full object-cover"
-        src="/videos/barcos-hero.mp4"
-        poster="/videos/barcos-hero.jpg"
+        src={asset("/videos/barcos-hero.mp4")}
+        poster={asset("/videos/barcos-hero.jpg")}
         autoPlay
         muted
         loop

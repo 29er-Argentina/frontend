@@ -3,6 +3,7 @@ import "@fontsource/anton/400.css";
 import "@fontsource-variable/manrope";
 import "@fontsource-variable/jetbrains-mono";
 import "./globals.css";
+import { asset } from "@/lib/paths";
 
 export const metadata: Metadata = {
   title: {
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
     locale: "es_AR",
     type: "website",
   },
-  icons: { icon: "/favicon.svg" },
+  icons: { icon: asset("/favicon.svg") },
 };
 
 export const viewport: Viewport = {

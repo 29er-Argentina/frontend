@@ -5,10 +5,11 @@ import Icon from "./Icon";
 import FieldInput from "./FieldInput";
 import { SECTIONS, type SectionSchema } from "@/lib/admin-schema";
 import type { SectionKey } from "@/lib/content";
-import { saveSectionAction } from "@/app/admin/actions";
+import { asset } from "@/lib/paths";
+import { usePanel } from "./PanelProvider";
 
 type Row = Record<string, unknown>;
-type Status = { kind: "idle" } | { kind: "saved"; at: string } | { kind: "error"; errors: string[] };
+type Status = { kind: "idle" } | { kind: "saved" } | { kind: "error"; errors: string[] };
 
 const isEmpty = (v: unknown) => v === "" || v === null || v === undefined || (Array.isArray(v) && v.every((x) => !String(x).trim()));
 
@@ -31,6 +32,7 @@ export default function SectionEditor({
   showTitle?: boolean;
 }) {
   const schema = SECTIONS[sectionKey];
+  const { saveSection } = usePanel();
   const [value, setValue] = useState<unknown>(initial);
   const [saved, setSaved] = useState(() => JSON.stringify(initial));
   const [status, setStatus] = useState<Status>({ kind: "idle" });
@@ -41,16 +43,16 @@ export default function SectionEditor({
   const save = useCallback(() => {
     setStatus({ kind: "idle" });
     startTransition(async () => {
-      const res = await saveSectionAction(sectionKey, value);
+      const res = await saveSection(sectionKey, value);
       if (res.ok) {
         setValue(res.value);
         setSaved(JSON.stringify(res.value));
-        setStatus({ kind: "saved", at: res.savedAt });
+        setStatus({ kind: "saved" });
       } else {
         setStatus({ kind: "error", errors: res.errors });
       }
     });
-  }, [sectionKey, value]);
+  }, [saveSection, sectionKey, value]);
 
   // avisar antes de cerrar la pestaña con cambios sin guardar
   useEffect(() => {
@@ -88,7 +90,7 @@ export default function SectionEditor({
             <p className="mt-2 max-w-2xl text-sm text-foam/55">{schema.description}</p>
           </div>
           <a
-            href={schema.preview}
+            href={asset(schema.preview)}
             target="_blank"
             rel="noreferrer"
             className="admin-focus inline-flex items-center gap-1.5 rounded-full px-3.5 py-2 text-sm font-semibold text-foam/70 ring-1 ring-white/15 transition hover:text-white"
@@ -131,10 +133,7 @@ export default function SectionEditor({
               </div>
             ) : status.kind === "saved" && !dirty ? (
               <span className="flex items-center gap-2 font-semibold text-celeste-light">
-                <Icon name="check" className="h-4 w-4" /> Guardado y publicado.
-                <a href={schema.preview} target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:text-white">
-                  Ver en el sitio
-                </a>
+                <Icon name="check" className="h-4 w-4" /> Guardado. La web se actualiza en un par de minutos.
               </span>
             ) : (
               <span className="flex items-center gap-2 font-semibold">
@@ -196,10 +195,10 @@ function ListEditor({ schema, items, onChange, autoNew }: { schema: SectionSchem
 
   // "Nueva noticia" / "Nuevo evento" desde el resumen, y links directos a un ítem (#news-2)
   useEffect(() => {
-    if (autoNew && !didAuto.current) {
+    if (autoNew && !didAuto.current && new URLSearchParams(location.search).get("nuevo") === "1") {
       didAuto.current = true;
       add();
-      history.replaceState(null, "", location.pathname);
+      history.replaceState(history.state, "", location.pathname);
     }
     const m = location.hash.match(new RegExp(`^#${schema.key}-(\\d+)$`));
     if (m) {

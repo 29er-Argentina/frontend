@@ -6,5 +6,5 @@ out
 next-env.d.ts
 /export
 
-# contenido y archivos subidos desde el panel
-/data
+# llave cifrada del panel: se genera en cada build
+/public/panel-key.json

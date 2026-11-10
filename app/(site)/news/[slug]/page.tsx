@@ -6,7 +6,7 @@ import { getContent } from "@/lib/store";
 import { newsDate } from "@/lib/dates";
 
 // las notas nuevas que se crean desde el panel también se generan
-export const dynamicParams = true;
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const { news: NEWS } = await getContent();

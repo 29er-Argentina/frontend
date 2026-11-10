@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { NewsItem } from "@/lib/content";
 import { newsDate } from "@/lib/dates";
+import { asset } from "@/lib/paths";
 
 const PALETTES = [
   { bg: "#0b1d33", a: "#74acdf", b: "#f6b40e" },
@@ -21,7 +22,7 @@ export function NewsCover({ item, className = "" }: { item: NewsItem; className?
     return (
       <div className={`relative overflow-hidden ${className}`}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={item.image} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+        <img src={asset(item.image)} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105" />
       </div>
     );
   }

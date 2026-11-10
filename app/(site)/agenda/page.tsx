@@ -13,7 +13,6 @@ export const metadata: Metadata = {
 
 
 // las regatas pasan a "Anteriores" según la fecha: se recalcula cada hora
-export const revalidate = 3600;
 
 export default async function AgendaPage() {
   const { events } = await getContent();

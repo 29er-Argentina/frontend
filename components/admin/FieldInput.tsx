@@ -2,7 +2,9 @@
 
 import { useId, useRef, useState } from "react";
 import Icon from "./Icon";
+import { previewUrl, usePanel } from "./PanelProvider";
 import type { Field } from "@/lib/admin-schema";
+import { UPLOAD_URL_PREFIX } from "@/lib/panel-config";
 
 type Props = { field: Field; value: unknown; onChange: (v: unknown) => void };
 
@@ -107,17 +109,13 @@ function UploadInput({ field, value, onChange, id }: { field: Field; value: stri
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const isImage = field.type === "image";
+  const { upload: uploadFile } = usePanel();
 
   async function upload(file: File) {
     setError("");
     setBusy(true);
     try {
-      const body = new FormData();
-      body.append("file", file);
-      const res = await fetch("/api/admin/upload", { method: "POST", body });
-      const data = (await res.json().catch(() => ({}))) as { url?: string; error?: string };
-      if (!res.ok || !data.url) throw new Error(data.error || "No se pudo subir el archivo.");
-      onChange(data.url);
+      onChange(await uploadFile(file));
     } catch (e) {
       setError(e instanceof Error ? e.message : "No se pudo subir el archivo.");
     } finally {
@@ -127,7 +125,7 @@ function UploadInput({ field, value, onChange, id }: { field: Field; value: stri
   }
 
   const accept = isImage ? "image/jpeg,image/png,image/webp" : "application/pdf";
-  const fileName = value.startsWith("/media/") ? value.slice(7) : value;
+  const fileName = value.startsWith(UPLOAD_URL_PREFIX) ? value.slice(UPLOAD_URL_PREFIX.length) : value;
 
   return (
     <div
@@ -144,7 +142,7 @@ function UploadInput({ field, value, onChange, id }: { field: Field; value: stri
           <div className="grid h-24 w-36 shrink-0 place-items-center overflow-hidden rounded-xl bg-ink ring-1 ring-white/10">
             {value ? (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={value} alt="Vista previa" className="h-full w-full object-cover" />
+              <img src={previewUrl(value)} alt="Vista previa" className="h-full w-full object-cover" />
             ) : (
               <span className="px-3 text-center text-[11px] text-foam/40">Sin foto</span>
             )}
@@ -168,7 +166,7 @@ function UploadInput({ field, value, onChange, id }: { field: Field; value: stri
           </button>
           {value && (
             <>
-              <a href={value} target="_blank" rel="noreferrer" className="admin-focus inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-sm font-semibold text-foam/70 ring-1 ring-white/15 hover:text-white">
+              <a href={previewUrl(value)} target="_blank" rel="noreferrer" className="admin-focus inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-sm font-semibold text-foam/70 ring-1 ring-white/15 hover:text-white">
                 Ver <Icon name="external" className="h-3.5 w-3.5" />
               </a>
               <button
@@ -188,7 +186,7 @@ function UploadInput({ field, value, onChange, id }: { field: Field; value: stri
           className="admin-input mt-3"
           type="url"
           placeholder="…o pegá un link: https://"
-          value={value.startsWith("/media/") ? "" : value}
+          value={value.startsWith(UPLOAD_URL_PREFIX) ? "" : value}
           onChange={(e) => onChange(e.target.value)}
           aria-label={`${field.label}: link`}
         />

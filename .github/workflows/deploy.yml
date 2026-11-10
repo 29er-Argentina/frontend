@@ -1,0 +1,56 @@
+name: Publicar sitio
+
+on:
+  push:
+    branches: [main]
+  # todos los días a las 3 AM (Argentina), para que la agenda pase solos los eventos terminados
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# si Delfi guarda varias veces seguidas, solo se publica la última versión
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - id: pages
+        uses: actions/configure-pages@v5
+
+      - run: npm ci
+
+      - run: npm run build
+        env:
+          NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          ADMIN_USER: ${{ vars.ADMIN_USER || 'delfi' }}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+          PANEL_TOKEN: ${{ secrets.PANEL_TOKEN }}
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,12 +1,15 @@
-import Link from "next/link";
-import Icon from "@/components/admin/Icon";
-import { ADMIN_PAGES, SECTIONS } from "@/lib/admin-schema";
-import { requireSession } from "@/lib/auth";
-import { longRange, newsDate, splitEvents } from "@/lib/dates";
-import { findPending } from "@/lib/pending";
-import { getActivity, getContent } from "@/lib/store";
+"use client";
 
-export const dynamic = "force-dynamic";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import Icon from "./Icon";
+import { usePanel } from "./PanelProvider";
+import { ADMIN_PAGES, SECTIONS } from "@/lib/admin-schema";
+import { longRange, newsDate, splitEvents } from "@/lib/dates";
+import type { Activity } from "@/lib/github";
+import { CONTENT_FILE } from "@/lib/panel-config";
+import { asset } from "@/lib/paths";
+import { findPending } from "@/lib/pending";
 
 function ago(iso: string) {
   const mins = Math.round((Date.now() - new Date(iso).getTime()) / 60000);
@@ -18,10 +21,19 @@ function ago(iso: string) {
   return d === 1 ? "ayer" : `hace ${d} días`;
 }
 
-export default async function Dashboard() {
-  const { user } = await requireSession();
-  const content = await getContent();
-  const activity = await getActivity(8);
+export default function Dashboard() {
+  const { user, content, gh, deploy } = usePanel();
+  const [activity, setActivity] = useState<Activity[] | null>(null);
+  // se recarga después de cada publicación
+  useEffect(() => {
+    let alive = true;
+    gh.activity(CONTENT_FILE, 8)
+      .then((a) => alive && setActivity(a))
+      .catch(() => alive && setActivity([]));
+    return () => {
+      alive = false;
+    };
+  }, [gh, deploy.kind]);
   const pending = findPending(content);
   const { upcoming } = splitEvents(content.events);
   const nextEvent = upcoming.find((e) => e.start) ?? upcoming[0];
@@ -34,7 +46,7 @@ export default async function Dashboard() {
       <header className="animate-rise">
         <div className="font-mono text-[11px] uppercase tracking-[0.3em] text-celeste">Resumen</div>
         <h1 className="mt-3 font-display text-5xl uppercase leading-none sm:text-6xl">Hola, {name}</h1>
-        <p className="mt-3 max-w-xl text-foam/65">Desde acá manejás todo el contenido de la web. Los cambios se publican apenas tocás &quot;Guardar&quot;.</p>
+        <p className="mt-3 max-w-xl text-foam/65">Desde acá manejás todo el contenido de la web. Cuando tocás &quot;Guardar&quot;, la web se actualiza sola en uno o dos minutos.</p>
       </header>
 
       {/* Accesos rápidos */}
@@ -45,7 +57,7 @@ export default async function Dashboard() {
         <Link href="/admin/agenda?nuevo=1" className="admin-focus inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-ink transition hover:-translate-y-0.5">
           <Icon name="plus" className="h-4 w-4" /> Nuevo evento
         </Link>
-        <a href="/" target="_blank" rel="noreferrer" className="admin-focus inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-bold ring-1 ring-white/20 transition hover:bg-white/10">
+        <a href={asset("/")} target="_blank" rel="noreferrer" className="admin-focus inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-bold ring-1 ring-white/20 transition hover:bg-white/10">
           Ver el sitio <Icon name="external" className="h-4 w-4" />
         </a>
       </div>
@@ -119,7 +131,9 @@ export default async function Dashboard() {
         {/* Actividad */}
         <section className="rounded-[24px] bg-white/[0.03] p-6 ring-1 ring-white/10 lg:col-span-2">
           <h2 className="font-display text-2xl uppercase">Últimos cambios</h2>
-          {activity.length === 0 ? (
+          {activity === null ? (
+            <p className="mt-4 text-sm text-foam/45">Cargando…</p>
+          ) : activity.length === 0 ? (
             <p className="mt-4 text-sm text-foam/55">Todavía no se guardó nada desde el panel. Los cambios que hagas van a aparecer acá.</p>
           ) : (
             <ol className="mt-5 space-y-4">

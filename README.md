@@ -24,66 +24,77 @@ npm run dev
 
 Abrí http://localhost:3000
 
-## Build de producción
+## Build
 
 ```bash
-npm run build
-npm run start
+npm run build   # genera el sitio estático en out/
+npm run start   # lo sirve en local para revisarlo
 ```
+
+Es un sitio **100 % estático** (`output: "export"`): no necesita servidor.
+
+## Publicación (GitHub Pages)
+
+`.github/workflows/deploy.yml` construye y publica el sitio en GitHub Pages:
+
+- con cada push a `main` (incluidos los guardados del panel);
+- todos los días a las 3 AM, para que la agenda pase solos los eventos terminados a "pasados";
+- a mano, desde la pestaña *Actions* → *Publicar sitio* → *Run workflow*.
+
+En *Settings → Pages* la fuente tiene que ser **GitHub Actions**.
 
 ## Panel de administración
 
 Todo el contenido (agenda, noticias, barcos, anualidad, documentos, clubes, comisión,
 textos del inicio y datos de contacto) se edita desde **/admin**, sin tocar código.
-Los cambios se publican al guardar.
 
-- Usuario y contraseña: variables `ADMIN_USER` y `ADMIN_PASSWORD`.
-- `SESSION_SECRET`: clave para firmar la sesión (32 caracteres o más).
+Cómo funciona sin servidor:
 
-En local están en `.env.local` (no se sube a git). Para generar un `SESSION_SECRET`:
+1. Al guardar, el panel hace un commit al repo desde el navegador: el contenido va a
+   `content/site.json` y las fotos y PDFs a `public/uploads/`. El historial de git es el
+   registro de cambios y la copia de seguridad.
+2. Ese commit dispara el workflow, que reconstruye el sitio. En 1 o 2 minutos está publicado
+   (el panel muestra un aviso cuando termina).
 
-```bash
-node -e "console.log(require('crypto').randomBytes(32).toString('base64url'))"
-```
+Para hacer commits, el panel necesita un token de GitHub. En cada build,
+`scripts/seal-panel-key.mjs` lo **cifra con el usuario y la contraseña** del panel
+(PBKDF2 de 600.000 iteraciones + AES-GCM) y lo deja en `/panel-key.json`. Al entrar, el
+navegador lo descifra con lo que se escribe en el login. Sin la contraseña correcta, el
+archivo no sirve.
+
+Como ese archivo es público, **la contraseña tiene que ser larga** (una frase de 4 o 5
+palabras): el build en GitHub falla si tiene menos de 14 caracteres.
+
+### Configuración (Settings → Secrets and variables → Actions)
+
+| Nombre | Tipo | Valor |
+|---|---|---|
+| `ADMIN_PASSWORD` | Secret | Contraseña del panel (14 caracteres o más) |
+| `PANEL_TOKEN` | Secret | Token *fine-grained* solo sobre este repo, con **Contents: Read and write** y **Actions: Read** |
+| `ADMIN_USER` | Variable (opcional) | Usuario del panel (por defecto `delfi`) |
+
+Si faltan, el sitio se publica igual, pero el panel no deja entrar.
+
+Para cambiar la contraseña o renovar el token: se actualiza el secret y se vuelve a correr el
+workflow. La llave vieja deja de servir.
+
+En local, las mismas variables van en `.env.local` (no se sube a git).
 
 El contenido inicial está en `lib/defaults.ts`. Lo que se guarda desde el panel lo reemplaza sección por sección.
-
-### Dónde se guarda
-
-**En GitHub** (recomendado para producción): si están `GITHUB_TOKEN` y `GITHUB_REPO`, cada guardado
-es un commit al repo, en `data/content.json`, y las fotos y PDFs van a `data/uploads/`. El historial
-de git es el registro de cambios y la copia de seguridad.
-
-| Variable | Valor |
-|---|---|
-| `GITHUB_TOKEN` | Token *fine-grained* con permiso **Contents: Read and write** solo sobre este repo |
-| `GITHUB_REPO` | `usuario/repo` |
-| `GITHUB_BRANCH` | Rama (por defecto `main`) |
-| `GITHUB_DATA_PATH` | Carpeta dentro del repo (por defecto `data`) |
-
-El token va **solo** en las variables de entorno del servidor: nunca en el código ni en el repo.
-
-**En disco** (si no hay token): archivos en `DATA_DIR` (por defecto `./data`), con una copia de la
-versión anterior en `DATA_DIR/backups` antes de cada guardado. Sirve para trabajar en local.
-
-## Deploy
-
-- **Render**: el repo incluye `render.yaml`. En el dashboard hay que cargar `ADMIN_PASSWORD`,
-  `GITHUB_TOKEN` y `GITHUB_REPO`. Los commits del panel en `data/` no disparan un deploy nuevo
-  (`buildFilter`): el sitio lee el contenido actualizado directo de GitHub.
-- Sin las variables de GitHub, el plan *free* de Render pierde lo editado en cada deploy o reinicio.
 
 ## Estructura
 
 ```
-app/(site)/          páginas públicas
-app/admin/           panel: login, resumen y editores
-app/media/           sirve las fotos y PDFs subidos
-proxy.ts             protege /admin
-components/          secciones del sitio; components/admin/ el panel
-lib/content.ts       tipos del contenido y menú
-lib/defaults.ts      contenido inicial
-lib/admin-schema.ts  qué se edita en cada sección del panel
-lib/store.ts         lectura y guardado del contenido
+app/(site)/            páginas públicas
+app/admin/             panel: resumen y editores
+components/            secciones del sitio; components/admin/ el panel
+content/site.json      contenido guardado desde el panel (lo crea el primer guardado)
+public/uploads/        fotos y PDFs subidos desde el panel
+lib/content.ts         tipos del contenido y menú
+lib/defaults.ts        contenido inicial
+lib/admin-schema.ts    qué se edita en cada sección del panel
+lib/store.ts           lectura del contenido al momento del build
+lib/github.ts          commits desde el panel
+scripts/seal-panel-key.mjs  cifra el token del panel en cada build
 lib/three/, lib/game/  escena 3D y juego de regata
 ```

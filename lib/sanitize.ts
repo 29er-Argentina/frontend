@@ -2,7 +2,7 @@ import type { Field, SectionSchema } from "./admin-schema";
 
 /* Valida y normaliza lo que llega del panel según el esquema de la sección. */
 
-const UPLOAD_URL = /^\/media\/[a-z0-9-]{1,80}\.(jpg|png|webp|pdf)$/;
+const UPLOAD_URL = /^\/uploads\/[a-z0-9-]{1,80}\.(jpg|png|webp|pdf)$/;
 const HTTP_URL = /^https?:\/\/[^\s<>"']+$/i;
 const EMAIL = /^[^\s@<>"']+@[^\s@<>"']+\.[^\s@<>"']+$/;
 const TEL = /^[0-9+()\-\s]{6,30}$/;
