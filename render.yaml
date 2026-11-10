@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: twenty-nier
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    # los guardados del panel hacen commits en data/: no hace falta volver a publicar por eso
+    buildFilter:
+      ignoredPaths:
+        - data/**
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      # Panel de administración (/admin)
+      - key: ADMIN_USER
+        value: delfi
+      - key: ADMIN_PASSWORD
+        sync: false # se carga a mano en el dashboard de Render
+      - key: SESSION_SECRET
+        generateValue: true
+      # Guardado en GitHub: cada cambio del panel es un commit al repo
+      - key: GITHUB_TOKEN
+        sync: false # token fine-grained con "Contents: Read and write" solo sobre este repo
+      - key: GITHUB_REPO
+        sync: false # "usuario/repo"
+      - key: GITHUB_BRANCH
+        value: main
+      - key: GITHUB_DATA_PATH
+        value: data
