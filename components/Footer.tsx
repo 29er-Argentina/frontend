@@ -69,7 +69,12 @@ export default async function Footer() {
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-6 font-mono text-[11px] text-foam/40 sm:flex-row sm:items-center sm:justify-between sm:px-8">
           <span>© {year} 29er Argentina</span>
           <RestrictedLink />
-          <span>Clase Internacional 29er · Diseño Julian Bethwaite</span>
+          <span>
+            Diseño y desarrollo{" "}
+            <a href="https://raven3.com.ar" target="_blank" rel="noreferrer" className="text-foam/70 underline decoration-white/20 underline-offset-4 transition hover:text-white hover:decoration-white/60">
+              Raven3
+            </a>
+          </span>
         </div>
       </div>
     </footer>
