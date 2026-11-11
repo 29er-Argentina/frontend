@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LogoMark } from "./Logo";
+import { Logo } from "./Logo";
 import { NAV } from "@/lib/content";
 import { getContent } from "@/lib/store";
 
@@ -10,7 +10,7 @@ export default async function Footer() {
     <footer className="relative border-t border-white/5 bg-ink print:hidden">
       <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-8 md:grid-cols-12">
         <div className="md:col-span-4">
-          <LogoMark className="h-20 w-20" />
+          <Logo className="h-20" />
           <p className="mt-6 max-w-sm text-sm leading-relaxed text-foam/60">
             Cuenta oficial de la clase 29er en Argentina. Deportes y recreación, con viento a favor.
           </p>
