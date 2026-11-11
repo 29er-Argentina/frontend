@@ -2,7 +2,7 @@ name: Publicar sitio
 
 on:
   push:
-    branches: [main]
+    branches: [gh-pages]
   # todos los días a las 3 AM (Argentina), para que la agenda pase solos los eventos terminados
   schedule:
     - cron: "0 6 * * *"

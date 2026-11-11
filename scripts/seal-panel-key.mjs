@@ -6,7 +6,7 @@
 //   ADMIN_PASSWORD  contraseña del panel
 //   PANEL_TOKEN     token fine-grained de GitHub (Contents: Read and write)
 //   PANEL_REPO      "org/repo" (en GitHub Actions sale solo de GITHUB_REPOSITORY)
-//   PANEL_BRANCH    rama (por defecto la del build, o "main")
+//   PANEL_BRANCH    rama (por defecto la del build, o "gh-pages")
 
 import { mkdir, rm, writeFile } from "node:fs/promises";
 
@@ -18,7 +18,7 @@ const user = (process.env.ADMIN_USER || "delfi").trim().toLowerCase();
 const password = process.env.ADMIN_PASSWORD || "";
 const token = process.env.PANEL_TOKEN || "";
 const repo = process.env.PANEL_REPO || process.env.GITHUB_REPOSITORY || "";
-const branch = process.env.PANEL_BRANCH || process.env.GITHUB_REF_NAME || "main";
+const branch = process.env.PANEL_BRANCH || process.env.GITHUB_REF_NAME || "gh-pages";
 const api = (process.env.PANEL_API_URL || "https://api.github.com").replace(/\/+$/, "");
 
 if (!password || !token || !repo) {

@@ -37,7 +37,7 @@ Es un sitio **100 % estático** (`output: "export"`): no necesita servidor.
 
 `.github/workflows/deploy.yml` construye y publica el sitio en GitHub Pages:
 
-- con cada push a `main` (incluidos los guardados del panel);
+- con cada push a `gh-pages`, la única rama del repo (incluidos los guardados del panel);
 - todos los días a las 3 AM, para que la agenda pase solos los eventos terminados a "pasados";
 - a mano, desde la pestaña *Actions* → *Publicar sitio* → *Run workflow*.
 
