@@ -55,10 +55,10 @@ export default async function AnualidadPage() {
                 <div className={`font-mono text-[11px] font-bold uppercase tracking-[0.3em] ${full ? "text-ink/60" : "text-celeste"}`}>
                   Opción {i + 1}
                 </div>
-                <h2 className="mt-4 max-w-[70%] font-display text-5xl uppercase leading-[0.9] sm:text-6xl">{m.name}</h2>
+                <h2 className="mt-4 max-w-[70%] font-display text-2xl uppercase leading-[0.95] sm:text-4xl">{m.name}</h2>
                 <div className="mt-6 flex items-baseline gap-3">
                   {m.price != null && m.price > 0 ? (
-                    <span className="font-display text-5xl">{peso(m.price)}</span>
+                    <span className="font-display text-4xl">{peso(m.price)}</span>
                   ) : (
                     <span className={`font-mono text-sm uppercase tracking-[0.2em] ${full ? "text-ink/70" : "text-foam/60"}`}>Valor: consultá con tesorería</span>
                   )}
@@ -87,15 +87,15 @@ export default async function AnualidadPage() {
       </section>
 
       <section id="como-pagar" className="mx-auto max-w-7xl scroll-mt-28 px-5 sm:px-8">
-        <h2 className="font-display text-4xl uppercase sm:text-6xl">Cómo pagar</h2>
+        <h2 className="font-display text-3xl uppercase sm:text-5xl">Cómo pagar</h2>
         <ol className="mt-10 grid gap-6 md:grid-cols-3">
           {STEPS.map((s, i) => (
             <Reveal as="li" key={s.t} delay={i * 100} className="relative">
               <div className="flex items-center gap-4">
-                <span className="font-display text-7xl leading-none text-outline [--outline:#74acdf]">{i + 1}</span>
+                <span className="font-display text-7xl leading-none text-outline [--outline:#26a9e0]">{i + 1}</span>
                 {i < STEPS.length - 1 && <span className="hidden h-px flex-1 bg-gradient-to-r from-celeste/50 to-transparent md:block" />}
               </div>
-              <h3 className="mt-4 font-display text-2xl uppercase">{s.t}</h3>
+              <h3 className="mt-4 font-display text-xl uppercase">{s.t}</h3>
               <p className="mt-2 text-sm leading-relaxed text-foam/65">{s.d}</p>
             </Reveal>
           ))}
@@ -106,7 +106,7 @@ export default async function AnualidadPage() {
         <Reveal className="grid overflow-hidden rounded-[28px] bg-gradient-to-br from-tide to-navy ring-1 ring-white/10 lg:grid-cols-2">
           <div className="p-8 sm:p-12">
             <div className="font-mono text-[11px] uppercase tracking-[0.3em] text-celeste">Tesorería</div>
-            <h2 className="mt-4 font-display text-5xl uppercase leading-[0.9] sm:text-6xl">
+            <h2 className="mt-4 font-display text-4xl uppercase leading-[0.9] sm:text-5xl">
               Contacto <br />
               del tesorero
             </h2>
@@ -152,7 +152,7 @@ function ShareRing({ share, dark }: { share: number; dark: boolean }) {
           className={dark ? "stroke-ink" : "stroke-celeste"}
         />
       </svg>
-      <span className="absolute inset-0 grid place-items-center font-display text-3xl">{share}%</span>
+      <span className="absolute inset-0 grid place-items-center font-display text-2xl">{share}%</span>
     </div>
   );
 }

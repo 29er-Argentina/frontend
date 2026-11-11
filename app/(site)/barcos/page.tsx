@@ -49,7 +49,7 @@ export default async function BarcosPage() {
           {SPECS.map((sp) => (
             <div key={sp.label} className="bg-ink p-5">
               <div className="font-mono text-[9px] uppercase tracking-[0.25em] text-foam/45">{sp.label}</div>
-              <div className="mt-2 font-display text-3xl">
+              <div className="mt-2 font-display text-lg sm:text-2xl">
                 {(sp.value ?? 0).toLocaleString("es-AR", { minimumFractionDigits: sp.decimals ?? 0, maximumFractionDigits: sp.decimals ?? 0 })}
                 <span className="ml-1 font-mono text-xs text-celeste">{sp.unit}</span>
               </div>
@@ -76,7 +76,7 @@ export default async function BarcosPage() {
           >
             <div className="relative p-8 sm:p-12 lg:col-span-7">
               <div className="font-mono text-[11px] font-bold uppercase tracking-[0.3em] text-navy/70">Barcos usados a la venta</div>
-              <h2 className="mt-4 font-display text-[clamp(2.6rem,6vw,5rem)] uppercase leading-[0.88]">
+              <h2 className="mt-4 font-display text-[clamp(1.7rem,3.9vw,3.3rem)] uppercase leading-[0.88]">
                 La planilla <br />
                 de usados
               </h2>
@@ -102,13 +102,13 @@ export default async function BarcosPage() {
             <div
               className="absolute inset-0 opacity-30"
               style={{
-                backgroundImage: "linear-gradient(rgba(116,172,223,.18) 1px, transparent 1px), linear-gradient(90deg, rgba(116,172,223,.18) 1px, transparent 1px)",
+                backgroundImage: "linear-gradient(rgba(38,169,224,.18) 1px, transparent 1px), linear-gradient(90deg, rgba(38,169,224,.18) 1px, transparent 1px)",
                 backgroundSize: "28px 28px",
               }}
             />
             <div className="relative">
               <div className="font-mono text-[11px] uppercase tracking-[0.3em] text-celeste">Astillero</div>
-              <h2 className="mt-4 font-display text-[clamp(3rem,8vw,6.5rem)] uppercase leading-[0.85]">{s.name}</h2>
+              <h2 className="mt-4 font-display text-[clamp(2rem,5.2vw,4.2rem)] uppercase leading-[0.85]">{s.name}</h2>
               <p className="mt-5 max-w-md leading-relaxed text-foam/75">{s.text}</p>
               <ul className="mt-8 flex flex-wrap gap-2">
                 {BOATS.shipyardServices.map((t) => (
@@ -120,7 +120,7 @@ export default async function BarcosPage() {
             </div>
           </Reveal>
           <Reveal delay={120} className="rounded-[28px] bg-white/[0.03] p-8 ring-1 ring-white/10 sm:p-10 lg:col-span-5">
-            <h3 className="font-display text-3xl uppercase">Contacto</h3>
+            <h3 className="font-display text-2xl uppercase">Contacto</h3>
             <div className="mt-4">
               <ContactList
                 rows={[
@@ -148,7 +148,7 @@ export default async function BarcosPage() {
       {/* Checklist */}
       <section id="checklist" className="mx-auto max-w-7xl scroll-mt-28 px-5 py-20 sm:px-8 sm:py-24">
         <div className="flex flex-col gap-4 border-b border-white/10 pb-6 sm:flex-row sm:items-end sm:justify-between">
-          <h2 className="font-display text-4xl uppercase leading-none sm:text-6xl">
+          <h2 className="font-display text-3xl uppercase leading-none sm:text-5xl">
             Antes de comprar <span className="text-sol">un usado</span>
           </h2>
           <p className="max-w-sm text-sm text-foam/60">Seis cosas para revisar con alguien que conozca el barco antes de cerrar la compra.</p>
@@ -158,7 +158,7 @@ export default async function BarcosPage() {
             <Reveal as="li" key={c.t} delay={i * 60} className="bg-ink p-7">
               <div className="flex items-center gap-3">
                 <span className="grid h-8 w-8 place-items-center rounded-full ring-1 ring-sol/60 font-mono text-xs text-sol">{i + 1}</span>
-                <h3 className="font-display text-2xl uppercase">{c.t}</h3>
+                <h3 className="font-display text-xl uppercase">{c.t}</h3>
               </div>
               <p className="mt-3 text-sm leading-relaxed text-foam/65">{c.d}</p>
             </Reveal>

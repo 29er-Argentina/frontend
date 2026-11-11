@@ -40,7 +40,7 @@ export default async function InformacionPage() {
 
         <Reveal className="mt-10 flex flex-col items-start justify-between gap-6 rounded-[24px] bg-white/[0.03] p-8 ring-1 ring-white/10 sm:flex-row sm:items-center">
           <div>
-            <h2 className="font-display text-3xl uppercase">¿Tenés una duda de reglamento?</h2>
+            <h2 className="font-display text-2xl uppercase">¿Tenés una duda de reglamento?</h2>
             <p className="mt-2 text-sm text-foam/65">Escribinos y te ayudamos a encontrar la regla que buscás.</p>
           </div>
           <a
@@ -69,7 +69,7 @@ function DocRow({ doc, n }: { doc: DocItem; n: number }) {
       <PdfIcon n={n} muted={!available} />
       <div>
         <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-celeste">{doc.source}</div>
-        <h2 className="mt-2 font-display text-3xl uppercase leading-none sm:text-4xl">{doc.title}</h2>
+        <h2 className="mt-2 font-display text-2xl uppercase leading-none sm:text-3xl">{doc.title}</h2>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-foam/65">{doc.text}</p>
       </div>
       {available ? (
@@ -88,16 +88,16 @@ function PdfIcon({ n, muted }: { n: number; muted: boolean }) {
     <div className={`relative h-24 w-20 shrink-0 transition group-hover:-rotate-3 ${muted ? "opacity-50" : ""}`} aria-hidden>
       <svg viewBox="0 0 80 96" className="h-full w-full">
         <path d="M6 4h48l20 20v66a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" fill="#eef5fb" />
-        <path d="M54 4v18a2 2 0 0 0 2 2h18" fill="#a9d3f5" />
+        <path d="M54 4v18a2 2 0 0 0 2 2h18" fill="#88d0ee" />
         {[40, 48, 56, 64].map((y) => (
           <rect key={y} x="14" y={y} width={y === 64 ? 30 : 48} height="3" rx="1.5" fill="#12304f" opacity=".35" />
         ))}
-        <rect x="0" y="72" width="44" height="16" rx="3" fill="#f6b40e" />
-        <text x="22" y="84" textAnchor="middle" fontFamily="JetBrains Mono Variable, monospace" fontWeight="700" fontSize="10" fill="#040b15">
+        <rect x="0" y="72" width="44" height="16" rx="3" fill="#faaf40" />
+        <text x="22" y="84" textAnchor="middle" fontFamily="var(--font-mono)" fontWeight="700" fontSize="10" fill="#040b15">
           PDF
         </text>
       </svg>
-      <span className="absolute right-2 top-7 font-display text-2xl text-tide">{n}</span>
+      <span className="absolute right-2 top-7 font-display text-xl text-tide">{n}</span>
     </div>
   );
 }

@@ -8,3 +8,6 @@ next-env.d.ts
 
 # llave cifrada del panel: se genera en cada build
 /public/panel-key.json
+
+# tipografías originales (.ttf): no se publican, se usan los .woff2 de app/fonts
+/fonts-src

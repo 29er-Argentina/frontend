@@ -48,7 +48,7 @@ export default async function NewsArticle(props: PageProps<"/news/[slug]">) {
             {newsDate(item.date)}
           </time>
         </div>
-        <h1 className="mt-5 animate-rise font-display text-[clamp(2.6rem,7vw,5.5rem)] uppercase leading-[0.9] [animation-delay:160ms]">{item.title}</h1>
+        <h1 className="mt-5 animate-rise font-display text-[clamp(1.7rem,4.6vw,3.6rem)] uppercase leading-[0.9] [animation-delay:160ms]">{item.title}</h1>
         <p className="mt-6 animate-rise text-lg leading-relaxed text-foam/75 [animation-delay:240ms]">{item.excerpt}</p>
       </header>
 
@@ -57,7 +57,7 @@ export default async function NewsArticle(props: PageProps<"/news/[slug]">) {
       </div>
 
       <div className="mx-auto max-w-3xl px-5 py-14 sm:px-8">
-        <div className="space-y-6 text-lg leading-[1.75] text-foam/85 first-letter:float-left first-letter:mr-3 first-letter:font-display first-letter:text-7xl first-letter:leading-[0.8] first-letter:text-sol">
+        <div className="space-y-6 text-lg leading-[1.75] text-foam/85 first-letter:float-left first-letter:mr-3 first-letter:font-display first-letter:text-5xl first-letter:leading-[0.8] first-letter:text-sol">
           {item.body.map((p, i) => (
             <p key={i}>{p}</p>
           ))}
@@ -70,7 +70,7 @@ export default async function NewsArticle(props: PageProps<"/news/[slug]">) {
       {more.length > 0 && (
         <section className="border-t border-white/10">
           <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
-            <h2 className="font-display text-4xl uppercase">Seguí leyendo</h2>
+            <h2 className="font-display text-3xl uppercase">Seguí leyendo</h2>
             <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {more.map((n) => (
                 <li key={n.slug}>

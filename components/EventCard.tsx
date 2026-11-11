@@ -27,7 +27,7 @@ export function DateBlock({ e, compact = false }: { e: EventItem; compact?: bool
       className={`flex shrink-0 flex-col items-center justify-center rounded-2xl bg-foam text-ink ${compact ? "h-[72px] w-[72px]" : "h-28 w-24 sm:w-28"}`}
     >
       <span className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-tide">{monthShort(e.start)}</span>
-      <span className={`font-display leading-none ${compact ? "text-3xl" : "text-5xl"}`}>
+      <span className={`font-display leading-none ${compact ? "text-2xl" : "text-4xl"}`}>
         {d}
         {endDay && endDay !== d && !compact && <span className="text-2xl text-tide/60">–{endDay}</span>}
       </span>
@@ -53,7 +53,7 @@ export default function EventCard({ e, past = false }: { e: EventItem; past?: bo
           <span className={`rounded-full px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-[0.15em] ${kind.color}`}>{kind.label}</span>
           {past && <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-foam/40">Finalizado</span>}
         </div>
-        <h3 className="mt-2.5 font-display text-2xl uppercase leading-none sm:text-3xl">{e.name}</h3>
+        <h3 className="mt-2.5 font-display text-xl uppercase leading-none sm:text-2xl">{e.name}</h3>
         <dl className="mt-3 grid gap-x-6 gap-y-1 text-sm text-foam/65 sm:grid-cols-[auto_1fr]">
           <dt className="font-mono text-[10px] uppercase tracking-[0.2em] text-foam/40 sm:pt-1">Cuándo</dt>
           <dd>{e.start ? longRange(e.start, e.end) : "A confirmar"}</dd>

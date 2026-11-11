@@ -3,12 +3,12 @@ import Link from "next/link";
 export default function NotFound() {
   return (
     <section className="grain relative grid min-h-[80svh] place-items-center overflow-hidden px-5 pt-24 text-center">
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center select-none font-display text-[40vw] leading-none text-outline [--outline:rgba(116,172,223,0.12)]">
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center select-none font-display text-[40vw] leading-none text-outline [--outline:rgba(38,169,224,0.12)]">
         404
       </div>
       <div className="relative">
         <div className="font-mono text-[11px] uppercase tracking-[0.3em] text-celeste">Fuera de la cancha</div>
-        <h1 className="mt-4 font-display text-[clamp(3rem,9vw,7rem)] uppercase leading-[0.88]">
+        <h1 className="mt-4 font-display text-[clamp(2rem,5.9vw,4.6rem)] uppercase leading-[0.88]">
           Esta boya <br />
           no existe
         </h1>

@@ -23,7 +23,7 @@ export default function PageHeader({
       <div className="pointer-events-none absolute -right-24 bottom-0 h-[360px] w-[360px] rounded-full bg-sol/10 blur-[120px]" />
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-6 top-24 select-none font-display text-[clamp(9rem,26vw,24rem)] uppercase leading-[0.8] text-outline [--outline:rgba(116,172,223,0.14)] sm:top-20"
+        className="pointer-events-none absolute -right-6 top-24 select-none font-display text-[clamp(9rem,26vw,24rem)] uppercase leading-[0.8] text-outline [--outline:rgba(38,169,224,0.14)] sm:top-20"
       >
         {sail}
       </div>
@@ -41,7 +41,7 @@ export default function PageHeader({
           <span className="h-px w-10 bg-celeste/50" />
           {kicker}
         </div>
-        <h1 className="mt-5 max-w-5xl animate-rise font-display text-[clamp(3.2rem,9vw,8rem)] uppercase leading-[0.86] [animation-delay:160ms]">{title}</h1>
+        <h1 className="mt-5 max-w-5xl animate-rise font-display text-[clamp(2.1rem,5.9vw,5.2rem)] uppercase leading-[0.86] [animation-delay:160ms]">{title}</h1>
         {intro && <p className="mt-7 max-w-2xl animate-rise text-base leading-relaxed text-foam/75 sm:text-lg [animation-delay:240ms]">{intro}</p>}
         {links && links.length > 0 && (
           <ul className="mt-9 flex animate-rise flex-wrap gap-2 [animation-delay:320ms]">

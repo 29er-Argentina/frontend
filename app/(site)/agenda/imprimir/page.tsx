@@ -44,7 +44,7 @@ export default async function PrintableCalendar() {
         <header className="flex items-center justify-between border-b-4 border-ink pb-5">
           <div>
             <div className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-tide">Clase Internacional 29er · Argentina</div>
-            <h1 className="mt-1 font-display text-5xl uppercase leading-none">Calendario {season}</h1>
+            <h1 className="mt-1 font-display text-4xl uppercase leading-none">Calendario {season}</h1>
           </div>
           <LogoMark className="h-16 w-16" />
         </header>
@@ -53,12 +53,12 @@ export default async function PrintableCalendar() {
 
         {[...groups.entries()].map(([month, items]) => (
           <section key={month} className="break-inside-avoid border-b border-ink/15 py-5">
-            <h2 className="font-display text-2xl uppercase text-tide">{month}</h2>
+            <h2 className="font-display text-xl uppercase text-tide">{month}</h2>
             <table className="mt-3 w-full text-sm">
               <tbody>
                 {items.map((e) => (
                   <tr key={e.id} className="align-top">
-                    <td className="w-16 py-1.5 font-display text-3xl leading-none">{parts(e.start).d}</td>
+                    <td className="w-16 py-1.5 font-display text-2xl leading-none">{parts(e.start).d}</td>
                     <td className="py-1.5">
                       <div className="font-bold">{e.name}</div>
                       <div className="text-xs text-ink/65">
@@ -79,7 +79,7 @@ export default async function PrintableCalendar() {
 
         {tbd.length > 0 && (
           <section className="break-inside-avoid py-5">
-            <h2 className="font-display text-2xl uppercase text-tide">Fecha a confirmar</h2>
+            <h2 className="font-display text-xl uppercase text-tide">Fecha a confirmar</h2>
             <ul className="mt-3 grid grid-cols-2 gap-2 text-sm">
               {tbd.map((e) => (
                 <li key={e.id} className="flex items-center gap-3 rounded border border-dashed border-ink/30 px-3 py-2">

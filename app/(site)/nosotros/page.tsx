@@ -33,7 +33,7 @@ export default async function NosotrosPage() {
 
       <section id="clubes" className="mx-auto max-w-7xl scroll-mt-28 px-5 py-20 sm:px-8">
         <div className="flex items-baseline justify-between border-b border-white/10 pb-4">
-          <h2 className="font-display text-4xl uppercase sm:text-6xl">Clubes asociados</h2>
+          <h2 className="font-display text-3xl uppercase sm:text-5xl">Clubes asociados</h2>
           <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-foam/50">{CLUBS.length} clubes</span>
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
@@ -41,13 +41,13 @@ export default async function NosotrosPage() {
             <Reveal key={c.id} delay={i * 120} className="group relative overflow-hidden rounded-[28px] bg-white/[0.03] p-8 ring-1 ring-white/10 sm:p-10">
               <div
                 aria-hidden
-                className="pointer-events-none absolute -right-4 -top-6 select-none font-display text-[9rem] leading-none text-outline [--outline:rgba(116,172,223,0.18)] transition duration-700 group-hover:-translate-x-3"
+                className="pointer-events-none absolute -right-4 -top-6 select-none font-display text-[9rem] leading-none text-outline [--outline:rgba(38,169,224,0.18)] transition duration-700 group-hover:-translate-x-3"
               >
                 {c.short}
               </div>
               <div className="relative">
                 <Burgee index={i} />
-                <h3 className="mt-6 font-display text-5xl uppercase leading-none">{c.short}</h3>
+                <h3 className="mt-6 font-display text-4xl uppercase leading-none">{c.short}</h3>
                 <p className="mt-2 text-foam/70">{c.name}</p>
                 <div className="mt-8">
                   <ContactList
@@ -76,7 +76,7 @@ export default async function NosotrosPage() {
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
           <div className="text-center">
             <div className="font-mono text-[11px] uppercase tracking-[0.3em] text-celeste">Autoridades</div>
-            <h2 className="mt-4 font-display text-5xl uppercase sm:text-7xl">Comisión directiva</h2>
+            <h2 className="mt-4 font-display text-4xl uppercase sm:text-5xl">Comisión directiva</h2>
           </div>
           <ul className="mt-14 grid grid-cols-2 gap-x-6 gap-y-12 lg:grid-cols-4">
             {BOARD.map((b, i) => (
@@ -94,8 +94,8 @@ export default async function NosotrosPage() {
 /** Gallardete triangular genérico (no es el escudo oficial de cada club). */
 function Burgee({ index }: { index: number }) {
   const colors = [
-    ["#74acdf", "#eef5fb"],
-    ["#f6b40e", "#12304f"],
+    ["#26a9e0", "#eef5fb"],
+    ["#faaf40", "#12304f"],
   ][index % 2];
   return (
     <svg viewBox="0 0 64 40" className="h-10 w-16" aria-hidden>

@@ -216,7 +216,7 @@ export function createMonacoHarbor() {
   posts.frustumCulled = false;
   g.add(posts);
   // carteles de colores sobre el guardarraíl del lado del pueblo, de fondo detrás de los autos (sin marcas)
-  const boardColors = ["#0b5d3b", "#f6f6f6", "#c8102e", "#111316", "#f6b40e", "#1e41ff"];
+  const boardColors = ["#0b5d3b", "#f6f6f6", "#c8102e", "#111316", "#faaf40", "#1e41ff"];
   const boards = new THREE.InstancedMesh(new THREE.BoxGeometry(9.6, 1.8, 0.08), new THREE.MeshStandardMaterial({ roughness: 0.6 }), 60);
   const bc = new THREE.Color();
   for (let i = 0; i < 60; i++) {
@@ -250,7 +250,7 @@ export function createMonacoHarbor() {
   g.add(box(26, 9, 22, std("#e9dcc2"), -350, QUAY_TOP - 1, QUAY_Z - 2));
 
   // tribunas con público del lado del pueblo
-  const crowdColors = ["#d62828", "#f6f6f6", "#f6b40e", "#2a6fdb", "#ff8a00", "#1d1d1d", "#74acdf"];
+  const crowdColors = ["#d62828", "#f6f6f6", "#faaf40", "#2a6fdb", "#ff8a00", "#1d1d1d", "#26a9e0"];
   const seats: { x: number; y: number; z: number; c: string }[] = [];
   for (const [x0, x1] of [[-60, 40], [-250, -150]] as const) {
     for (let row = 0; row < 6; row++) {

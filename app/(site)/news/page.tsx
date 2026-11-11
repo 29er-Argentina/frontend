@@ -44,7 +44,7 @@ export default async function NewsPage() {
               <InstagramIcon className="h-10 w-10" />
               <div>
                 <div className="font-mono text-[11px] font-bold uppercase tracking-[0.3em] text-ink/60">@29er_argentina</div>
-                <div className="mt-2 font-display text-4xl uppercase leading-[0.9]">
+                <div className="mt-2 font-display text-3xl uppercase leading-[0.9]">
                   El día a día, <br />
                   en historias
                 </div>

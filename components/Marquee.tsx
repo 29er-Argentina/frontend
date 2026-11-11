@@ -6,7 +6,7 @@ export default function Marquee() {
     <div className="relative -rotate-1 overflow-hidden border-y border-white/10 bg-celeste py-4 text-ink" aria-hidden>
       <div className="flex w-max animate-marquee gap-10 whitespace-nowrap">
         {row.map((w, i) => (
-          <span key={i} className="flex items-center gap-10 font-display text-3xl uppercase sm:text-4xl">
+          <span key={i} className="flex items-center gap-10 font-display text-2xl uppercase sm:text-3xl">
             {w}
             <Sun />
           </span>

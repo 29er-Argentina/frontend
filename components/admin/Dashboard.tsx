@@ -45,7 +45,7 @@ export default function Dashboard() {
     <div className="mx-auto max-w-6xl px-5 py-10 sm:px-8 lg:py-14">
       <header className="animate-rise">
         <div className="font-mono text-[11px] uppercase tracking-[0.3em] text-celeste">Resumen</div>
-        <h1 className="mt-3 font-display text-5xl uppercase leading-none sm:text-6xl">Hola, {name}</h1>
+        <h1 className="mt-3 font-display text-4xl uppercase leading-none sm:text-5xl">Hola, {name}</h1>
         <p className="mt-3 max-w-xl text-foam/65">Desde acá manejás todo el contenido de la web. Cuando tocás &quot;Guardar&quot;, la web se actualiza sola en uno o dos minutos.</p>
       </header>
 
@@ -91,7 +91,7 @@ export default function Dashboard() {
         {/* Pendientes */}
         <section id="pendientes" className="scroll-mt-24 rounded-[24px] bg-white/[0.03] p-6 ring-1 ring-white/10 lg:col-span-3">
           <div className="flex items-center justify-between">
-            <h2 className="font-display text-2xl uppercase">Para completar</h2>
+            <h2 className="font-display text-xl uppercase">Para completar</h2>
             <span className="rounded-full bg-white/[0.06] px-3 py-1 font-mono text-[11px] text-foam/60">{pending.length}</span>
           </div>
           <p className="mt-1 text-sm text-foam/55">Hacé clic en cualquiera para ir directo a cargarlo.</p>
@@ -130,7 +130,7 @@ export default function Dashboard() {
 
         {/* Actividad */}
         <section className="rounded-[24px] bg-white/[0.03] p-6 ring-1 ring-white/10 lg:col-span-2">
-          <h2 className="font-display text-2xl uppercase">Últimos cambios</h2>
+          <h2 className="font-display text-xl uppercase">Últimos cambios</h2>
           {activity === null ? (
             <p className="mt-4 text-sm text-foam/45">Cargando…</p>
           ) : activity.length === 0 ? (
@@ -157,7 +157,7 @@ export default function Dashboard() {
 
       {/* Secciones */}
       <section className="mt-10">
-        <h2 className="font-display text-2xl uppercase">Secciones</h2>
+        <h2 className="font-display text-xl uppercase">Secciones</h2>
         <ul className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {ADMIN_PAGES.map((p) => (
             <li key={p.slug}>
@@ -202,7 +202,7 @@ function StatCard({
           <Icon name={icon} />
         </span>
       </div>
-      <div className={`mt-3 font-display text-6xl leading-none ${warn ? "text-sol" : ""}`}>{value}</div>
+      <div className={`mt-3 font-display text-5xl leading-none ${warn ? "text-sol" : ""}`}>{value}</div>
       <p className="mt-3 line-clamp-2 text-sm text-foam/55">{children}</p>
     </Link>
   );

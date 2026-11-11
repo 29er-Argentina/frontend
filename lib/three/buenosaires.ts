@@ -134,7 +134,7 @@ export function createBuenosAires(p: SkyPalette) {
   const zA = SHORE[0][0], zB = 640;
   g.add(shoreStrip(SHORE, () => 9, () => 23, zA, zB, TOP + 0.02, 0.06, std("#3b3e43", { roughness: 0.95 }), 10));
   const fishers: { x: number; y: number; z: number; c: string }[] = [];
-  const shirts = ["#2a6fdb", "#d62828", "#f1f1f1", "#1d1d1d", "#74acdf", "#f6b40e"];
+  const shirts = ["#2a6fdb", "#d62828", "#f1f1f1", "#1d1d1d", "#26a9e0", "#faaf40"];
   for (let z = -1300; z < 620; z += 9) if (rand() < 0.35) fishers.push({ x: shoreAt(SHORE, z) - 1.5, y: TOP + 0.85, z, c: shirts[Math.floor(rand() * shirts.length)] });
 
   // Aeroparque: pista con marcas, calles de rodaje, terminal y torre de control

@@ -24,10 +24,10 @@ export default async function Hero() {
           {home.heroKicker}
         </p>
         <h1 className="mt-5 font-display uppercase leading-[0.9] tracking-tight">
-          <span className="block animate-rise text-[clamp(3.4rem,9vw,8.6rem)] [animation-delay:350ms]">Volar</span>
-          <span className="block animate-rise text-[clamp(3.4rem,9vw,8.6rem)] [animation-delay:450ms]">sobre el</span>
-          <span className="block animate-rise text-[clamp(3.4rem,9vw,8.6rem)] [animation-delay:550ms]">
-            <span className="text-outline [--outline:#a9d3f5]">agua</span>
+          <span className="block animate-rise text-[clamp(2.4rem,6.2vw,5.8rem)] [animation-delay:350ms]">Volar</span>
+          <span className="block animate-rise text-[clamp(2.4rem,6.2vw,5.8rem)] [animation-delay:450ms]">sobre el</span>
+          <span className="block animate-rise text-[clamp(2.4rem,6.2vw,5.8rem)] [animation-delay:550ms]">
+            <span className="text-outline [--outline:#88d0ee]">agua</span>
             <span className="text-sol">.</span>
           </span>
         </h1>
@@ -37,7 +37,7 @@ export default async function Hero() {
         <div className="mt-7 flex animate-rise flex-wrap md:mt-9 items-center gap-4 [animation-delay:800ms]">
           <a
             href="#regata"
-            className="group inline-flex items-center gap-3 rounded-full bg-sol px-7 py-4 font-bold text-ink transition hover:-translate-y-0.5 hover:shadow-[0_14px_44px_-12px_rgba(246,180,14,0.9)]"
+            className="group inline-flex items-center gap-3 rounded-full bg-sol px-7 py-4 font-bold text-ink transition hover:-translate-y-0.5 hover:shadow-[0_14px_44px_-12px_rgba(250,175,64,0.9)]"
           >
             Jugá la regata
             <span className="grid h-6 w-6 place-items-center rounded-full bg-ink text-xs text-sol transition group-hover:translate-x-1">→</span>
@@ -55,7 +55,7 @@ export default async function Hero() {
             {STATS.map(([v, l]) => (
               <div key={l}>
                 <dt className="font-mono text-[9px] uppercase tracking-[0.25em] text-foam/55 sm:text-[10px]">{l}</dt>
-                <dd className="font-display text-xl sm:text-3xl">{v}</dd>
+                <dd className="font-display text-lg sm:text-2xl">{v}</dd>
               </div>
             ))}
           </dl>

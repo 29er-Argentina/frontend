@@ -57,7 +57,7 @@ export default async function HomeLatest() {
                 <span className="grid h-11 w-11 place-items-center rounded-full bg-sol text-ink">
                   <CalendarIcon className="h-5 w-5" />
                 </span>
-                <div className="font-display text-3xl uppercase leading-none">
+                <div className="font-display text-2xl uppercase leading-none">
                   Próximos
                   <br />
                   eventos
@@ -69,7 +69,7 @@ export default async function HomeLatest() {
                   <li key={e.id} className="flex items-center gap-4 py-4">
                     <DateBlock e={e} compact />
                     <div className="min-w-0">
-                      <div className="font-display text-xl uppercase leading-tight">{e.name}</div>
+                      <div className="font-display text-lg uppercase leading-tight">{e.name}</div>
                       <div className="mt-1 truncate text-xs text-foam/55">
                         {e.start ? longRange(e.start, e.end) : "Fecha a confirmar"}
                         {e.place ? ` · ${e.place}` : ""}

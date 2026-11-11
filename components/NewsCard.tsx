@@ -4,10 +4,10 @@ import { newsDate } from "@/lib/dates";
 import { asset } from "@/lib/paths";
 
 const PALETTES = [
-  { bg: "#0b1d33", a: "#74acdf", b: "#f6b40e" },
-  { bg: "#12304f", a: "#f6b40e", b: "#ff6a1a" },
-  { bg: "#071426", a: "#ff6a1a", b: "#a9d3f5" },
-  { bg: "#0b1d33", a: "#a9d3f5", b: "#74acdf" },
+  { bg: "#0b1d33", a: "#26a9e0", b: "#faaf40" },
+  { bg: "#12304f", a: "#faaf40", b: "#ff6a1a" },
+  { bg: "#071426", a: "#ff6a1a", b: "#88d0ee" },
+  { bg: "#0b1d33", a: "#88d0ee", b: "#26a9e0" },
 ];
 
 function hash(s: string) {
@@ -35,7 +35,7 @@ export function NewsCover({ item, className = "" }: { item: NewsItem; className?
       <div
         className="absolute inset-0 opacity-30"
         style={{
-          backgroundImage: "linear-gradient(rgba(116,172,223,.25) 1px, transparent 1px), linear-gradient(90deg, rgba(116,172,223,.25) 1px, transparent 1px)",
+          backgroundImage: "linear-gradient(rgba(38,169,224,.25) 1px, transparent 1px), linear-gradient(90deg, rgba(38,169,224,.25) 1px, transparent 1px)",
           backgroundSize: "22px 22px",
         }}
       />
@@ -59,10 +59,10 @@ export function NewsCover({ item, className = "" }: { item: NewsItem; className?
           <path d="M204 40 C 250 90, 262 150, 252 200" fill="none" stroke="#040b15" strokeWidth="1" opacity=".25" />
           {/* casco */}
           <path d="M96 202 L 318 206 L 300 220 L 110 216 Z" fill="#eef5fb" />
-          <text x="178" y="152" textAnchor="middle" fontFamily="Anton, Impact, sans-serif" fontSize="17" fill={p.bg}>
+          <text x="178" y="152" textAnchor="middle" fontFamily="var(--font-display)" fontWeight="800" fontSize="17" fill={p.bg}>
             ARG
           </text>
-          <text x="174" y="176" textAnchor="middle" fontFamily="Anton, Impact, sans-serif" fontSize="17" fill={p.bg}>
+          <text x="174" y="176" textAnchor="middle" fontFamily="var(--font-display)" fontWeight="800" fontSize="17" fill={p.bg}>
             {sailNo}
           </text>
         </g>
@@ -85,7 +85,7 @@ export default function NewsCard({ item, size = "md" }: { item: NewsItem; size?:
         <time dateTime={item.date} className="font-mono text-[10px] uppercase tracking-[0.25em] text-celeste">
           {newsDate(item.date)}
         </time>
-        <h3 className={`mt-3 font-display uppercase leading-[1.05] ${size === "lg" ? "text-3xl sm:text-4xl" : "text-2xl"}`}>{item.title}</h3>
+        <h3 className={`mt-3 font-display uppercase leading-[1.05] ${size === "lg" ? "text-2xl sm:text-3xl" : "text-xl"}`}>{item.title}</h3>
         <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-foam/65">{item.excerpt}</p>
         <span className="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-bold text-white">
           Leer nota <span className="text-sol transition group-hover:translate-x-1">→</span>

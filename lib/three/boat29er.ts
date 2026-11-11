@@ -163,7 +163,7 @@ function sailTexture(kind: "main" | "jib" | "spi") {
     // sol
     g.save();
     g.translate(W / 2, H / 2);
-    g.fillStyle = "#f6b40e";
+    g.fillStyle = "#faaf40";
     for (let i = 0; i < 16; i++) {
       g.rotate(Math.PI / 8);
       g.beginPath();
@@ -267,7 +267,7 @@ function sailTexture(kind: "main" | "jib" | "spi") {
       g.fillRect(W * 0.2, H * 0.335, W * 0.7, 84);
       g.fillStyle = "#ffffff";
       g.fillRect(W * 0.2, H * 0.335 + 28, W * 0.7, 28);
-      g.fillStyle = "#f6b40e";
+      g.fillStyle = "#faaf40";
       g.beginPath();
       g.arc(W * 0.55, H * 0.335 + 42, 10, 0, Math.PI * 2);
       g.fill();
@@ -437,7 +437,7 @@ function playmobil(o: FigureOpts) {
   const ink = plastic("#121417", { roughness: 0.3 });
   const pants = plastic(o.legs);
   const sleeve = plastic(o.sleeves);
-  const jersey = plastic("#ffffff", { map: stripesTexture("#74acdf", "#ffffff") });
+  const jersey = plastic("#ffffff", { map: stripesTexture("#26a9e0", "#ffffff") });
   const box = (w: number, h: number, d: number, m: THREE.Material) => new THREE.Mesh(new THREE.BoxGeometry(w, h, d), m);
 
   const root = new THREE.Group();
@@ -696,7 +696,7 @@ export function create29er() {
   motion.add(crewSide);
 
   // Timonel: sentado en el ala mirando hacia adentro, colgado hacia afuera, mano de popa en el stick
-  const helm = playmobil({ legs: "#1b2230", sleeves: "#74acdf", vest: "#14181f", headwear: { kind: "cap", color: "#5b6470" }, glasses: true });
+  const helm = playmobil({ legs: "#1b2230", sleeves: "#26a9e0", vest: "#14181f", headwear: { kind: "cap", color: "#5b6470" }, glasses: true });
   const HELM_SEAT = new THREE.Vector3(0.87, 0.34, 1.05);
   helm.root.position.copy(HELM_SEAT);
   helm.root.rotation.y = Math.PI / 2; // mira a -X (hacia el centro del barco)

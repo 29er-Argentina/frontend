@@ -356,7 +356,7 @@ export default function RegattaGame() {
       className={
         full
           ? "fixed inset-0 z-[100] h-[100dvh] w-screen overflow-hidden bg-abyss"
-          : "relative overflow-hidden rounded-[28px] border border-white/10 bg-abyss shadow-[0_40px_120px_-40px_rgba(116,172,223,0.35)]"
+          : "relative overflow-hidden rounded-[28px] border border-white/10 bg-abyss shadow-[0_40px_120px_-40px_rgba(38,169,224,0.35)]"
       }
     >
       <div className={full ? "relative h-full w-full" : "relative aspect-[3/4] w-full sm:aspect-[16/10] lg:aspect-[16/8.5]"}>
@@ -393,7 +393,7 @@ export default function RegattaGame() {
                   <span className="hidden truncate sm:inline">{hud.legName}</span>
                 </span>
                 <span className={`flex shrink-0 items-center gap-2 ${hud.inIrons ? "text-buoy" : ""}`}>
-                  <span className="font-display text-2xl leading-none tabular-nums">
+                  <span className="font-display text-xl leading-none tabular-nums">
                     {hud.knots.toFixed(1)}
                     <span className="ml-1 font-mono text-[11px] text-foam/80">kn</span>
                   </span>
@@ -471,7 +471,7 @@ export default function RegattaGame() {
                     {hud.intro.step}/{hud.intro.steps}
                   </span>
                 </div>
-                <div className="mt-2 font-display text-4xl uppercase leading-none sm:text-6xl [@media(max-height:500px)]:text-4xl">{hud.intro.title}</div>
+                <div className="mt-2 font-display text-3xl uppercase leading-none sm:text-5xl [@media(max-height:500px)]:text-3xl">{hud.intro.title}</div>
                 <p className="mt-2 text-sm text-foam/85 sm:text-base">{hud.intro.subtitle}</p>
               </div>
               <div className="mt-4 flex gap-1.5" aria-hidden>
@@ -517,7 +517,7 @@ export default function RegattaGame() {
           <div className="absolute inset-0 flex items-end overflow-y-auto bg-gradient-to-t from-ink/95 via-ink/45 to-transparent p-5 pt-16 sm:items-center sm:bg-gradient-to-r sm:from-ink/85 sm:via-ink/40 sm:p-12 [@media(max-height:500px)]:py-5">
             <div className="w-full min-w-0 max-w-md">
               <div className="font-mono text-[11px] uppercase tracking-[0.3em] text-sol">Mini juego · 3 regatas</div>
-              <h3 className="mt-2 font-display text-4xl uppercase leading-[0.9] sm:mt-3 sm:text-7xl [@media(max-height:500px)]:text-5xl">
+              <h3 className="mt-2 font-display text-3xl uppercase leading-[0.9] sm:mt-3 sm:text-5xl [@media(max-height:500px)]:text-4xl">
                 Regata <span className="text-celeste">29er</span>
               </h3>
 
@@ -573,7 +573,7 @@ export default function RegattaGame() {
                 <button
                   onClick={start}
                   disabled={!ready}
-                  className="group inline-flex min-h-12 items-center gap-3 rounded-full bg-sol px-7 font-bold text-ink transition hover:-translate-y-0.5 hover:shadow-[0_12px_40px_-10px_rgba(246,180,14,0.8)] active:scale-[0.97] disabled:cursor-wait disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:shadow-none"
+                  className="group inline-flex min-h-12 items-center gap-3 rounded-full bg-sol px-7 font-bold text-ink transition hover:-translate-y-0.5 hover:shadow-[0_12px_40px_-10px_rgba(250,175,64,0.8)] active:scale-[0.97] disabled:cursor-wait disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:shadow-none"
                 >
                   {ready ? "Largar regata" : "Cargando…"}
                   {ready && <span className="transition group-hover:translate-x-1">→</span>}
@@ -591,7 +591,7 @@ export default function RegattaGame() {
               <div className="font-mono text-[11px] uppercase tracking-[0.3em] text-sol">
                 {course.name} · {result.record ? "¡Nuevo récord!" : "Llegada"}
               </div>
-              <div className="mt-2 font-display text-7xl tabular-nums sm:text-8xl [@media(max-height:500px)]:text-5xl">{fmt(result.time)}</div>
+              <div className="mt-2 font-display text-5xl tabular-nums sm:text-6xl [@media(max-height:500px)]:text-4xl">{fmt(result.time)}</div>
               <div className="mx-auto mt-4 flex max-w-sm flex-wrap justify-center gap-2 font-mono text-[11px] text-foam/80">
                 {["Largada", ...course.route.map((r) => r.short)].map((l, i) => (
                   <div key={i} className="min-w-[4.25rem] rounded-lg bg-white/5 px-2 py-2">
@@ -673,7 +673,7 @@ export default function RegattaGame() {
               <line x1="29" y1="51" x2="35" y2="51" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
             </svg>
             <div>
-              <div className="font-display text-4xl uppercase leading-none">Girá el celular</div>
+              <div className="font-display text-3xl uppercase leading-none">Girá el celular</div>
               <p className="mt-3 max-w-xs text-sm text-foam/75">La regata se juega apaisada. Poné el teléfono de costado para seguir.</p>
             </div>
             <button onClick={exitFull} className="rounded-full px-5 py-2.5 text-sm font-bold text-white ring-1 ring-white/30 transition hover:bg-white/10">
@@ -744,7 +744,7 @@ function Compass({ heading }: { heading: number }) {
           })}
         </g>
         {/* proa: marca fija arriba */}
-        <path d="M0 -23.5 L-3.2 -17.5 L3.2 -17.5Z" fill="#f6b40e" />
+        <path d="M0 -23.5 L-3.2 -17.5 L3.2 -17.5Z" fill="#faaf40" />
         <circle r="1.6" fill="#eef5fb" />
       </svg>
       <span className="rounded bg-ink/55 px-1.5 py-0.5 font-mono text-[11px] tabular-nums text-white">
@@ -801,8 +801,8 @@ function WindDial({ twa, irons = false }: { twa: number; irons?: boolean }) {
       <path d="M0 -12 C4 -6 4 6 3 11 L-3 11 C-4 6 -4 -6 0 -12Z" fill="#eef5fb" />
       {/* viento */}
       <g transform={`rotate(${twa})`}>
-        <line x1="0" y1="-29" x2="0" y2="-16" stroke="#f6b40e" strokeWidth="3" strokeLinecap="round" />
-        <path d="M0 -14 L-4 -20 L4 -20Z" fill="#f6b40e" />
+        <line x1="0" y1="-29" x2="0" y2="-16" stroke="#faaf40" strokeWidth="3" strokeLinecap="round" />
+        <path d="M0 -14 L-4 -20 L4 -20Z" fill="#faaf40" />
       </g>
     </svg>
   );
@@ -842,21 +842,21 @@ function drawMap(c: HTMLCanvasElement | null, h: Hud) {
   g.setLineDash([]);
   // boyas
   for (const mk of m.marks) {
-    g.fillStyle = mk.active ? "#f6b40e" : "rgba(255,106,26,0.85)";
+    g.fillStyle = mk.active ? "#faaf40" : "rgba(255,106,26,0.85)";
     g.beginPath();
     g.arc(sx(mk.x), sz(mk.z), mk.active ? 4 : 3, 0, Math.PI * 2);
     g.fill();
     if (mk.active) {
       // ↺ rodeo a babor (antihorario, igual que en el mapa)
       const cx = sx(mk.x), cy = sz(mk.z), r = 9;
-      g.strokeStyle = "#f6b40e";
+      g.strokeStyle = "#faaf40";
       g.lineWidth = 1.5;
       g.beginPath();
       g.arc(cx, cy, r, 0, 1, true); // ~300° en sentido antihorario, termina en ángulo 1
       g.stroke();
       const a = 1;
       const tx = cx + r * Math.cos(a), ty = cy + r * Math.sin(a);
-      g.fillStyle = "#f6b40e";
+      g.fillStyle = "#faaf40";
       g.beginPath();
       g.moveTo(tx + 3.5 * Math.sin(a), ty - 3.5 * Math.cos(a));
       g.lineTo(tx - 3 * Math.cos(a), ty - 3 * Math.sin(a));
@@ -893,6 +893,6 @@ function drawMap(c: HTMLCanvasElement | null, h: Hud) {
     g.stroke();
     g.restore();
   };
-  arrow(W - 14, 16, -h.windFrom, "rgba(246,180,14,0.9)");
-  if (Math.hypot(m.current.x, m.current.z) > 0.05) arrow(14, 16, Math.atan2(-m.current.x, m.current.z), "rgba(116,172,223,0.9)");
+  arrow(W - 14, 16, -h.windFrom, "rgba(250,175,64,0.9)");
+  if (Math.hypot(m.current.x, m.current.z) > 0.05) arrow(14, 16, Math.atan2(-m.current.x, m.current.z), "rgba(38,169,224,0.9)");
 }

@@ -232,7 +232,7 @@ export default function PanelProvider({ children }: { children: React.ReactNode 
     return (
       <div className="grid min-h-svh place-items-center bg-ink px-5">
         <div className="max-w-md rounded-[24px] bg-white/[0.03] p-8 text-center ring-1 ring-white/10">
-          <h1 className="font-display text-3xl uppercase">No se pudo cargar</h1>
+          <h1 className="font-display text-2xl uppercase">No se pudo cargar</h1>
           <p className="mt-3 text-sm text-foam/65">{phase.message}</p>
           <div className="mt-6 flex justify-center gap-2">
             <button onClick={() => load(session)} className="admin-focus rounded-full bg-sol px-5 py-2.5 text-sm font-bold text-ink">

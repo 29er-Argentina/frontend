@@ -67,7 +67,13 @@ export default async function Footer() {
       </div>
       <div className="border-t border-white/5">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-6 font-mono text-[11px] text-foam/40 sm:flex-row sm:items-center sm:justify-between sm:px-8">
-          <span>© {year} 29er Argentina</span>
+          <span>
+            © {year} 29er Argentina
+            <span className="mx-2 text-foam/20">·</span>
+            <Link href="/marca" className="text-foam/40 transition hover:text-foam/70">
+              Manual de marca
+            </Link>
+          </span>
           <RestrictedLink />
           <span>
             Diseño y desarrollo{" "}

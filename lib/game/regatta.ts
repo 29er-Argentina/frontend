@@ -134,8 +134,8 @@ function committeeBoat() {
   const c = document.createElement("canvas");
   c.width = 256; c.height = 160;
   const x = c.getContext("2d")!;
-  ["#74acdf", "#ffffff", "#74acdf"].forEach((col, i) => { x.fillStyle = col; x.fillRect(0, (i * 160) / 3, 256, 54); });
-  x.fillStyle = "#f6b40e"; x.beginPath(); x.arc(128, 80, 18, 0, TAU); x.fill();
+  ["#26a9e0", "#ffffff", "#26a9e0"].forEach((col, i) => { x.fillStyle = col; x.fillRect(0, (i * 160) / 3, 256, 54); });
+  x.fillStyle = "#faaf40"; x.beginPath(); x.arc(128, 80, 18, 0, TAU); x.fill();
   const flagTex = new THREE.CanvasTexture(c);
   flagTex.colorSpace = THREE.SRGBColorSpace;
   const flag = new THREE.Mesh(new THREE.PlaneGeometry(1.8, 1.1), new THREE.MeshStandardMaterial({ map: flagTex, side: THREE.DoubleSide }));
@@ -183,7 +183,7 @@ function chevron() {
   shape.closePath();
   const m = new THREE.Mesh(
     new THREE.ShapeGeometry(shape),
-    new THREE.MeshBasicMaterial({ color: "#f6b40e", transparent: true, opacity: 0.9, side: THREE.DoubleSide, depthTest: false })
+    new THREE.MeshBasicMaterial({ color: "#faaf40", transparent: true, opacity: 0.9, side: THREE.DoubleSide, depthTest: false })
   );
   m.rotation.x = -Math.PI / 2;
   const g = new THREE.Group();
@@ -283,11 +283,11 @@ export class RegattaEngine {
     /** Por cada tramo de boya: dirección (x, y=-z) de la semirrecta que hay que cruzar en sentido antihorario. */
     rays: { x: number; y: number }[];
   };
-  private rounder = roundArrows("#f6b40e");
+  private rounder = roundArrows("#faaf40");
   /** Obstáculos con los que se puede chocar: boyas de la ruta, boya de largada y lancha. */
   private obstacles: { x: number; z: number; r: number; group: number; penalty: boolean }[] = [];
   private coastData: Coast | null = null;
-  private beacon = beacon("#f6b40e");
+  private beacon = beacon("#faaf40");
   private line = lineStrip();
   private raf = 0;
   private timer = new THREE.Timer();
@@ -368,7 +368,7 @@ export class RegattaEngine {
     this.scene.add(this.arrow);
 
     this.buildCourse();
-    const pin = buoy("#f6b40e");
+    const pin = buoy("#faaf40");
     pin.position.set(COURSE.pin.x, 0, COURSE.pin.y);
     this.scene.add(pin);
     this.marks.push(pin);

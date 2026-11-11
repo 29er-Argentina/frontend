@@ -9,7 +9,7 @@ export default function SectionHeading({ index, kicker, title, children }: { ind
           <span className="h-px w-10 bg-celeste/50" />
           {kicker}
         </div>
-        <h2 className="mt-5 font-display text-[clamp(2.8rem,7vw,6rem)] uppercase leading-[0.88]">{title}</h2>
+        <h2 className="mt-5 font-display text-[clamp(1.8rem,4.6vw,3.9rem)] uppercase leading-[0.88]">{title}</h2>
       </Reveal>
       {children && (
         <Reveal delay={120} className="text-base leading-relaxed text-foam/75 lg:col-span-5 lg:pb-3">

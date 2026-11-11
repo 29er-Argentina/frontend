@@ -86,7 +86,7 @@ export default function SectionEditor({
       {showTitle && (
         <div className="mb-6 flex flex-wrap items-end justify-between gap-4 border-b border-white/10 pb-4">
           <div>
-            <h2 className="font-display text-3xl uppercase leading-none">{schema.title}</h2>
+            <h2 className="font-display text-2xl uppercase leading-none">{schema.title}</h2>
             <p className="mt-2 max-w-2xl text-sm text-foam/55">{schema.description}</p>
           </div>
           <a

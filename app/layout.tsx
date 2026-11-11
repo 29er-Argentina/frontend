@@ -1,7 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import "@fontsource/anton/400.css";
-import "@fontsource-variable/manrope";
-import "@fontsource-variable/jetbrains-mono";
+import "@fontsource-variable/archivo/wdth.css";
 import "./globals.css";
 import { asset } from "@/lib/paths";
 

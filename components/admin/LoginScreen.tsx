@@ -27,7 +27,7 @@ export default function LoginScreen({ onLogin }: { onLogin: (user: string, passw
       <div className="pointer-events-none absolute -bottom-40 -right-24 h-[460px] w-[460px] rounded-full bg-sol/10 blur-[120px]" />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-[-6vw] select-none text-center font-display text-[30vw] leading-none text-outline [--outline:rgba(116,172,223,0.08)]"
+        className="pointer-events-none absolute inset-x-0 bottom-[-6vw] select-none text-center font-display text-[30vw] leading-none text-outline [--outline:rgba(38,169,224,0.08)]"
       >
         29ER
       </div>
@@ -36,7 +36,7 @@ export default function LoginScreen({ onLogin }: { onLogin: (user: string, passw
         <div className="flex flex-col items-center text-center">
           <LogoMark className="h-16 w-16" />
           <div className="mt-6 font-mono text-[11px] uppercase tracking-[0.3em] text-celeste">Panel de administración</div>
-          <h1 className="mt-2 font-display text-5xl uppercase leading-none">Entrar</h1>
+          <h1 className="mt-2 font-display text-4xl uppercase leading-none">Entrar</h1>
         </div>
         <div className="mt-8 rounded-[28px] bg-navy/70 p-7 ring-1 ring-white/10 backdrop-blur-xl sm:p-8">
           <form onSubmit={submit} className="space-y-5">

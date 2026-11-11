@@ -121,7 +121,7 @@ export default function Nav({ instagram }: { instagram: string }) {
             {NAV.map((item, i) => (
               <li key={item.href} className="animate-rise py-4" style={{ animationDelay: `${i * 40}ms` }}>
                 <Link href={item.href} className="flex items-baseline justify-between">
-                  <span className={`font-display text-4xl uppercase ${isActive(item.href) ? "text-sol" : "text-white"}`}>{item.label}</span>
+                  <span className={`font-display text-3xl uppercase ${isActive(item.href) ? "text-sol" : "text-white"}`}>{item.label}</span>
                   <span className="font-mono text-[11px] text-foam/30">0{i + 1}</span>
                 </Link>
                 {item.children && (

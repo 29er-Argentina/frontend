@@ -39,7 +39,7 @@ export default async function AgendaPage() {
 
       <section id="proximas" className="mx-auto max-w-7xl scroll-mt-28 px-5 py-20 sm:px-8">
         <div className="flex items-baseline justify-between border-b border-white/10 pb-4">
-          <h2 className="font-display text-4xl uppercase sm:text-5xl">Próximas</h2>
+          <h2 className="font-display text-3xl uppercase sm:text-4xl">Próximas</h2>
           <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-foam/50">{upcoming.length} eventos</span>
         </div>
         <ol className="mt-8 space-y-4">
@@ -60,7 +60,7 @@ export default async function AgendaPage() {
             <PaperStack />
             <div className="relative">
               <div className="font-mono text-[11px] font-bold uppercase tracking-[0.3em]">Gratis · A4</div>
-              <div className="mt-2 max-w-xl font-display text-4xl uppercase leading-[0.9] sm:text-5xl">Mirá nuestro calendario para imprimir</div>
+              <div className="mt-2 max-w-xl font-display text-3xl uppercase leading-[0.9] sm:text-4xl">Mirá nuestro calendario para imprimir</div>
               <p className="mt-3 max-w-md font-semibold text-ink/75">Descargalo gratis e imprimilo: todas las regatas de la temporada en una hoja.</p>
             </div>
             <span className="relative inline-flex shrink-0 items-center gap-3 self-start rounded-full bg-ink px-6 py-4 font-bold text-white transition group-hover:gap-5 sm:self-auto">

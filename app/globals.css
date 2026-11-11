@@ -5,15 +5,19 @@
   --color-abyss: #071426;
   --color-navy: #0b1d33;
   --color-tide: #12304f;
-  --color-celeste: #74acdf;
-  --color-celeste-light: #a9d3f5;
-  --color-sol: #f6b40e;
+  /* Celeste y sol: tomados del logo oficial (public/logo-29er.png) */
+  --color-celeste: #26a9e0;
+  --color-celeste-light: #88d0ee;
+  --color-sol: #faaf40;
   --color-foam: #eef5fb;
   --color-buoy: #ff6a1a;
 
-  --font-display: "Anton", "Impact", "Arial Narrow", sans-serif;
-  --font-sans: "Manrope Variable", "Manrope", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, monospace;
+  /* Tipografías de marca: Benzin (titulares) + Acumin Variable Concept (texto y "ARGENTINA" del logo).
+     Acumin vive en Adobe Fonts: sin kit web se usa Archivo Variable, grotesca con eje de ancho equivalente.
+     "mono" quedó como nombre histórico: son las etiquetas en mayúscula espaciada (Acumin ancha, cifras tabulares). */
+  --font-display: "Benzin", "Archivo Variable", "Arial Black", sans-serif;
+  --font-sans: "acumin-variable", "Archivo Variable", "Archivo", system-ui, sans-serif;
+  --font-mono: "acumin-variable", "Archivo Variable", "Archivo", system-ui, sans-serif;
 
   --animate-marquee: marquee 38s linear infinite;
   --animate-rise: rise 1.1s cubic-bezier(0.2, 0.7, 0.1, 1) both;
@@ -52,6 +56,26 @@
   @keyframes rise {
     from { opacity: 0; transform: translateY(28px); }
     to { opacity: 1; transform: none; }
+  }
+}
+
+/* Benzin: se empaqueta desde app/fonts, así respeta el basePath de GitHub Pages */
+@font-face { font-family: "Benzin"; src: url("./fonts/benzin-regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Benzin"; src: url("./fonts/benzin-medium.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Benzin"; src: url("./fonts/benzin-semibold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Benzin"; src: url("./fonts/benzin-bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Benzin"; src: url("./fonts/benzin-extrabold.woff2") format("woff2"); font-weight: 800; font-style: normal; font-display: swap; }
+
+@layer base {
+  /* Titulares en Benzin Bold por defecto (font-bold/extrabold/medium lo cambian) */
+  .font-display {
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  /* Etiquetas en versión ancha, como "ARGENTINA" del logo */
+  .font-mono {
+    font-stretch: 115%;
+    font-variant-numeric: tabular-nums;
   }
 }
 
