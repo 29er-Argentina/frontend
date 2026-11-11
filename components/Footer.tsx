@@ -86,7 +86,7 @@ function RestrictedLink() {
       aria-label="Panel de administración — solo comisión"
       title="Solo comisión"
       className="group inline-flex self-start rounded-full p-[2px] transition hover:animate-shake motion-reduce:hover:animate-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sol sm:self-auto"
-      style={{ background: "repeating-linear-gradient(-45deg, #f6b40e 0 7px, #040b15 7px 14px)" }}
+      style={{ background: "repeating-linear-gradient(-45deg, #5b6472 0 7px, #040b15 7px 14px)" }}
     >
       <span className="flex items-center gap-2 rounded-full bg-ink px-3.5 py-1.5 uppercase tracking-[0.2em] text-sol">
         <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 transition group-hover:-rotate-12" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
