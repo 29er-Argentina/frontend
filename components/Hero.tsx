@@ -1,4 +1,4 @@
-import { asset } from "@/lib/paths";
+import HeroVideo from "./HeroVideo";
 import { getContent } from "@/lib/store";
 
 const STATS = [
@@ -12,17 +12,7 @@ export default async function Hero() {
   const { home } = await getContent();
   return (
     <section id="top" className="grain relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-ink">
-      <video
-        className="absolute inset-0 h-full w-full object-cover"
-        src={asset("/videos/barcos-hero.mp4")}
-        poster={asset("/videos/barcos-hero.jpg")}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        aria-hidden="true"
-      />
+      <HeroVideo />
 
       {/* viñetas para legibilidad */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink/75 via-ink/20 to-transparent" />

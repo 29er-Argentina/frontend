@@ -77,6 +77,23 @@ body {
   color: var(--color-ink);
 }
 
+/* Sin desplazamiento horizontal accidental en celulares (clip no rompe position: sticky) */
+html,
+body {
+  overflow-x: clip;
+}
+
+/* Video de fondo: nunca mostrar controles nativos (botón de play de iOS en bajo consumo, overlay de Android) */
+.hero-video::-webkit-media-controls,
+.hero-video::-webkit-media-controls-panel,
+.hero-video::-webkit-media-controls-overlay-play-button,
+.hero-video::-webkit-media-controls-start-playback-button,
+.hero-video::-webkit-media-controls-play-button {
+  display: none !important;
+  -webkit-appearance: none;
+  opacity: 0 !important;
+}
+
 /* textura de grano sutil */
 .grain::after {
   content: "";
