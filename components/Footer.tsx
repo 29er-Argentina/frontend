@@ -66,11 +66,36 @@ export default async function Footer() {
         </div>
       </div>
       <div className="border-t border-white/5">
-        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-6 font-mono text-[11px] text-foam/40 sm:flex-row sm:justify-between sm:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-6 font-mono text-[11px] text-foam/40 sm:flex-row sm:items-center sm:justify-between sm:px-8">
           <span>© {year} 29er Argentina</span>
+          <RestrictedLink />
           <span>Clase Internacional 29er · Diseño Julian Bethwaite</span>
         </div>
       </div>
     </footer>
+  );
+}
+
+/** Entrada al panel: con cinta de peligro para que nadie más se anime a tocarla. */
+function RestrictedLink() {
+  return (
+    <Link
+      href="/admin"
+      prefetch={false}
+      rel="nofollow"
+      aria-label="Panel de administración — solo comisión"
+      title="Solo comisión"
+      className="group inline-flex self-start rounded-full p-[2px] transition hover:animate-shake motion-reduce:hover:animate-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sol sm:self-auto"
+      style={{ background: "repeating-linear-gradient(-45deg, #f6b40e 0 7px, #040b15 7px 14px)" }}
+    >
+      <span className="flex items-center gap-2 rounded-full bg-ink px-3.5 py-1.5 uppercase tracking-[0.2em] text-sol">
+        <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 transition group-hover:-rotate-12" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+          <rect x="4" y="11" width="16" height="10" rx="2" />
+          <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+        </svg>
+        <span className="group-hover:hidden">Zona restringida · Solo comisión</span>
+        <span className="hidden text-buoy group-hover:inline">¿Seguro? No es para vos</span>
+      </span>
+    </Link>
   );
 }
