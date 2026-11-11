@@ -31,10 +31,16 @@ export default function Nav({ instagram }: { instagram: string }) {
   const isActive = (href: string) => (href === "/" ? isHome : pathname.startsWith(href));
   const solid = scrolled || !isHome || open;
 
+  // Ojo: con el menú abierto el header NO puede tener backdrop-blur: backdrop-filter convierte al header en el
+  // contenedor de los hijos `fixed`, y el menú quedaba encerrado en los 68px del header (con el video encima).
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-[background-color,padding,box-shadow] duration-500 print:hidden ${
-        solid ? "bg-ink/80 py-3 shadow-[0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl" : "py-5"
+        open
+          ? "bg-ink py-3 shadow-[0_1px_0_rgba(255,255,255,0.06)]"
+          : solid
+            ? "bg-ink/80 py-3 shadow-[0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl"
+            : "py-5"
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 sm:px-8" aria-label="Principal">
@@ -110,7 +116,7 @@ export default function Nav({ instagram }: { instagram: string }) {
       </nav>
 
       {open && (
-        <div id="menu-movil" className="fixed inset-x-0 bottom-0 top-[68px] overflow-y-auto bg-ink px-5 pb-10 pt-4 sm:px-8 lg:hidden">
+        <div id="menu-movil" className="fixed inset-x-0 bottom-0 top-[68px] overflow-y-auto overscroll-contain bg-ink px-5 pb-10 pt-4 sm:px-8 lg:hidden">
           <ul className="divide-y divide-white/10 border-y border-white/10">
             {NAV.map((item, i) => (
               <li key={item.href} className="animate-rise py-4" style={{ animationDelay: `${i * 40}ms` }}>
